@@ -8,6 +8,12 @@
 
 import UIKit
 
-class a: NSObject {
+class a {
+    
+    
+    func b()
+    {
+        print("asdadsad")
+    }
 
 }

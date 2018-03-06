@@ -59,6 +59,8 @@ class UserProfil: UIViewController{
    
     @objc func menuFunc(){
     
+        var menu = UserMenu()
+        self.present(menu,animated: true, completion: nil)
     }
 
     @objc func additionFunc(){

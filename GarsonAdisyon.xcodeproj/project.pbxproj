@@ -11,6 +11,9 @@
 		2E78C18B96F4A0B0755CC968 /* Pods_GarsonAdisyonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5917816FEC5F2F27C89DCFE5 /* Pods_GarsonAdisyonTests.framework */; };
 		451AEB2F20082651001F38B9 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451AEB2E20082651001F38B9 /* LoginClass.swift */; };
 		452050EB204DF03E003A6A1B /* TakeMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452050EA204DF03E003A6A1B /* TakeMoney.swift */; };
+		45233B37204E923C00697326 /* UserMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45233B36204E923C00697326 /* UserMenu.swift */; };
+		45233B39204E9DF200697326 /* ProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45233B38204E9DF200697326 /* ProductShow.swift */; };
+		45233B3B204EA35C00697326 /* MenuGetSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45233B3A204EA35C00697326 /* MenuGetSet.swift */; };
 		4528CD67204D30E900802DA8 /* UserAdisyon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528CD66204D30E900802DA8 /* UserAdisyon.swift */; };
 		454647932045AE5D005AD6E4 /* UserProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454647922045AE5D005AD6E4 /* UserProfil.swift */; };
 		454647952045F3F9005AD6E4 /* AdisyonGetSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454647942045F3F9005AD6E4 /* AdisyonGetSet.swift */; };
@@ -45,6 +48,9 @@
 		122D7B3ADA12E10DC77825E7 /* Pods-GarsonAdisyonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GarsonAdisyonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GarsonAdisyonTests/Pods-GarsonAdisyonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		451AEB2E20082651001F38B9 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
 		452050EA204DF03E003A6A1B /* TakeMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMoney.swift; sourceTree = "<group>"; };
+		45233B36204E923C00697326 /* UserMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenu.swift; sourceTree = "<group>"; };
+		45233B38204E9DF200697326 /* ProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductShow.swift; sourceTree = "<group>"; };
+		45233B3A204EA35C00697326 /* MenuGetSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGetSet.swift; sourceTree = "<group>"; };
 		4528CD66204D30E900802DA8 /* UserAdisyon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdisyon.swift; sourceTree = "<group>"; };
 		454647922045AE5D005AD6E4 /* UserProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfil.swift; sourceTree = "<group>"; };
 		454647942045F3F9005AD6E4 /* AdisyonGetSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdisyonGetSet.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				454647942045F3F9005AD6E4 /* AdisyonGetSet.swift */,
 				4528CD66204D30E900802DA8 /* UserAdisyon.swift */,
 				452050EA204DF03E003A6A1B /* TakeMoney.swift */,
+				45233B36204E923C00697326 /* UserMenu.swift */,
+				45233B38204E9DF200697326 /* ProductShow.swift */,
+				45233B3A204EA35C00697326 /* MenuGetSet.swift */,
 			);
 			path = GarsonAdisyon;
 			sourceTree = "<group>";
@@ -472,13 +481,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45233B3B204EA35C00697326 /* MenuGetSet.swift in Sources */,
 				454647952045F3F9005AD6E4 /* AdisyonGetSet.swift in Sources */,
 				459F8D78200608AE0015087E /* ViewController.swift in Sources */,
 				452050EB204DF03E003A6A1B /* TakeMoney.swift in Sources */,
 				459F8D76200608AE0015087E /* AppDelegate.swift in Sources */,
 				454647932045AE5D005AD6E4 /* UserProfil.swift in Sources */,
+				45233B37204E923C00697326 /* UserMenu.swift in Sources */,
 				4528CD67204D30E900802DA8 /* UserAdisyon.swift in Sources */,
 				451AEB2F20082651001F38B9 /* LoginClass.swift in Sources */,
+				45233B39204E9DF200697326 /* ProductShow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

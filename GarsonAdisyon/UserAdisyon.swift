@@ -35,17 +35,17 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
         tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "table")
         
-        searchBox = UITextField(frame:CGRect(x:screenSize.width*0.1,y:screenSize.height*0.1,width:screenSize.width*0.5,height:screenSize.height*0.05))
+        searchBox = UITextField(frame:CGRect(x:screenSize.width*0.1,y:screenSize.height*0.12,width:screenSize.width*0.5,height:screenSize.height*0.05))
         searchBox.placeholder = "Masa Numarası Giriniz"
         searchBox.borderStyle = .bezel
         searchBox.textColor = .black
         
-        backButton = UIButton(frame:CGRect(x:screenSize.width*0.02,y:screenSize.height*0.02,width:screenSize.width*0.1,height:screenSize.height*0.05))
+        backButton = UIButton(frame:CGRect(x:screenSize.width*0.05,y:screenSize.height*0.05,width:screenSize.width*0.1,height:screenSize.height*0.05))
         backButton.setTitle("Geri", for: .normal)
         backButton.backgroundColor = .blue
         backButton.addTarget(self, action: #selector(backScreen), for: .touchUpInside)
         
-        searchButton = UIButton(frame: CGRect(x:screenSize.width*0.65,y:screenSize.height*0.1,width:screenSize.width*0.3,height:screenSize.height*0.05))
+        searchButton = UIButton(frame: CGRect(x:screenSize.width*0.65,y:screenSize.height*0.12,width:screenSize.width*0.3,height:screenSize.height*0.05))
         searchButton.setTitle("Ara", for: .normal)
         searchButton.backgroundColor = .red
         searchButton.addTarget(self, action: #selector(veriYaz), for:.touchUpInside)

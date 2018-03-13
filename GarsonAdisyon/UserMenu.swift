@@ -23,6 +23,7 @@ class UserMenu: UIViewController {
     var backButton = UIButton()
     var productArray = [MenuGetSet]()
     var counterProduct = Int()
+    var sendetData = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -105,7 +106,6 @@ class UserMenu: UIViewController {
     {
         for i in productArray
         {
-            
             if i.productCategory != dataArray
             {
                 productArray.remove(at: counterProduct)
@@ -113,13 +113,16 @@ class UserMenu: UIViewController {
             }
             counterProduct += 1
         }
-        
-        setProductArray.set(productArray, forKey: "urunDizi")
-        
+        for i in productArray
+        {
+            sendetData.append(i.productNameGet() + "*" + i.productPriceGet() + "*" + i.productNoGet() + "*" + i.productInfoGet() + "*" + i.productCategoryGet())
+            sendetData.append("#")
+        }
+        //setProductArray.set(productArray.description, forKey: "urunDizi")
+        setProductArray.set(sendetData, forKey: "urunDizi")
         var show = ProductShow()
         self.present(show,animated: true,completion: nil )
-    
-    }
+   	 }
     
     
     @objc func dinnerFunc()

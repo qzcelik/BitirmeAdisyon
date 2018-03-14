@@ -120,9 +120,11 @@ class UserMenu: UIViewController {
         }
         //setProductArray.set(productArray.description, forKey: "urunDizi")
         setProductArray.set(sendetData, forKey: "urunDizi")
-        var show = ProductShow()
-        self.present(show,animated: true,completion: nil )
-   	 }
+       // var show = ProductShow()
+        //self.present(show,animated: true,completion: nil )
+   	    var s = MenuList()
+        self.present(s,animated: true,completion: nil)
+    }
     
     
     @objc func dinnerFunc()

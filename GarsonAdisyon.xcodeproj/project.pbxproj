@@ -23,6 +23,8 @@
 		459F8D80200608AE0015087E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 459F8D7E200608AE0015087E /* LaunchScreen.storyboard */; };
 		459F8D8B200608AF0015087E /* GarsonAdisyonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F8D8A200608AF0015087E /* GarsonAdisyonTests.swift */; };
 		459F8D96200608AF0015087E /* GarsonAdisyonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F8D95200608AF0015087E /* GarsonAdisyonUITests.swift */; };
+		45CD4B4820588C8D0076AA03 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD4B4720588C8D0076AA03 /* MenuList.swift */; };
+		45CD4B4A20588E1B0076AA03 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CD4B4920588E1B0076AA03 /* MenuCell.swift */; };
 		5CAB723EAED5A4FC7BC83A95 /* Pods_GarsonAdisyon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E5D4CC16FDDFDE8120622F /* Pods_GarsonAdisyon.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		459F8D91200608AF0015087E /* GarsonAdisyonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarsonAdisyonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		459F8D95200608AF0015087E /* GarsonAdisyonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarsonAdisyonUITests.swift; sourceTree = "<group>"; };
 		459F8D97200608AF0015087E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45CD4B4720588C8D0076AA03 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
+		45CD4B4920588E1B0076AA03 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		5917816FEC5F2F27C89DCFE5 /* Pods_GarsonAdisyonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GarsonAdisyonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EC8F4CE4C82CC79BC1C4278 /* Pods-GarsonAdisyonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GarsonAdisyonUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GarsonAdisyonUITests/Pods-GarsonAdisyonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A0F714A157F36192939A16 /* Pods-GarsonAdisyonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GarsonAdisyonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GarsonAdisyonTests/Pods-GarsonAdisyonTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				45233B36204E923C00697326 /* UserMenu.swift */,
 				45233B38204E9DF200697326 /* ProductShow.swift */,
 				45233B3A204EA35C00697326 /* MenuGetSet.swift */,
+				45CD4B4720588C8D0076AA03 /* MenuList.swift */,
+				45CD4B4920588E1B0076AA03 /* MenuCell.swift */,
 			);
 			path = GarsonAdisyon;
 			sourceTree = "<group>";
@@ -483,6 +489,7 @@
 			files = (
 				45233B3B204EA35C00697326 /* MenuGetSet.swift in Sources */,
 				454647952045F3F9005AD6E4 /* AdisyonGetSet.swift in Sources */,
+				45CD4B4A20588E1B0076AA03 /* MenuCell.swift in Sources */,
 				459F8D78200608AE0015087E /* ViewController.swift in Sources */,
 				452050EB204DF03E003A6A1B /* TakeMoney.swift in Sources */,
 				459F8D76200608AE0015087E /* AppDelegate.swift in Sources */,
@@ -491,6 +498,7 @@
 				4528CD67204D30E900802DA8 /* UserAdisyon.swift in Sources */,
 				451AEB2F20082651001F38B9 /* LoginClass.swift in Sources */,
 				45233B39204E9DF200697326 /* ProductShow.swift in Sources */,
+				45CD4B4820588C8D0076AA03 /* MenuList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

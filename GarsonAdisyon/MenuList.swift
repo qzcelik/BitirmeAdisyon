@@ -10,10 +10,13 @@ import UIKit
 
 class MenuList: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var resultData = UserDefaults.standard
     var screenSize = UIScreen.main.bounds
     var tableView = UITableView()
     var backButton = UIButton()
-    var array = ["iskender","pilav","çorba","karnıyarık"]
+    var resultDataArray = [MenuGetSet]()
+    var mealNameArray = [String]()
+    var mealPriceArray = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -24,46 +27,48 @@ class MenuList: UIViewController, UITableViewDataSource, UITableViewDelegate {
         backButton.setTitleColor(.white, for: .normal)
         backButton.addTarget(self, action: #selector(geri), for: .touchUpInside)
         
-        //tableView = UITableView(frame: view.bounds, style: .grouped)
-        
         tableView = UITableView(frame: CGRect(x:screenSize.width*0.001,y:screenSize.height*0.15,width:screenSize.width*0.99,height:screenSize.height*0.99))
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.allowsSelection = false
         tableView.register(MenuCell.self, forCellReuseIdentifier: "MenuCellId")
+        tableView.reloadData()
         
         view.addSubview(tableView)
         view.addSubview(backButton)
         
+        
+        var a = resultData.stringArray(forKey: "urunDizi") ?? [String]()
+        for i in a
+        {
+           var sepereateData =  i.components(separatedBy: "*")
+           mealNameArray.append(sepereateData[0])
+           mealPriceArray.append(sepereateData[1])
+           let buffer = MenuGetSet(productName: sepereateData[0],productPrice: sepereateData[1],productNo: sepereateData[2],productInfo: sepereateData[3],productCategory: sepereateData[4])
+           resultDataArray.append(buffer)
+        }
     }
- 
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      
-        return array.count
+        return resultDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = MenuCell(style: UITableViewCellStyle.default,reuseIdentifier:"MenuCellId")
-        cell.mealName.text = array[indexPath.row]
-        cell.mealPrice.text = array[indexPath.row]
-        cell.sendButton.addTarget(self, action: #selector(sellProduct), for: .touchUpInside)
-       
+        cell.mealName.text = mealNameArray[indexPath.row]
+        cell.mealPrice.text = mealPriceArray[indexPath.row]
+        cell.cafeLogo.image = #imageLiteral(resourceName: "logo")
+      
+        
         return cell
     }
     
-    @objc func sellProduct()
-    {
-        let alert = UIAlertController(title:"Basıldı",message:"Bilgilendirme",preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: nil))
-        self.present(alert,animated: true,completion: nil)
-    }
     
     @objc func geri()
     {

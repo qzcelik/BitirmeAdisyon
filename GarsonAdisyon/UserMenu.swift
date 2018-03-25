@@ -22,12 +22,16 @@ class UserMenu: UIViewController {
     var soupButton = UIButton()
     var backButton = UIButton()
     var productArray = [MenuGetSet]()
+    var productArrayBuffer = [MenuGetSet]()
     var counterProduct = Int()
     var sendetData = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        sendetData.removeAll()
+        productArray.removeAll()
+        productArrayBuffer.removeAll()
         uiElement()
         getMenuData()
     }
@@ -42,19 +46,22 @@ class UserMenu: UIViewController {
         drinkButton = UIButton(frame:CGRect (x: screenSize.width*0.6,y: screenSize.height*0.2,width: screenSize.width*0.3,height: screenSize.height*0.1))
         drinkButton.setTitle("İçecek", for: .normal)
         drinkButton.backgroundColor = .red
+        drinkButton.addTarget(self, action: #selector(drinkfunc), for: .touchUpInside)
         
         dessertButton = UIButton(frame:CGRect (x: screenSize.width*0.1,y: screenSize.height*0.4,width: screenSize.width*0.3,height: screenSize.height*0.1))
         dessertButton.setTitle("Tatlı", for: .normal)
         dessertButton.backgroundColor = .red
+        dessertButton.addTarget(self, action: #selector(dessertFunc), for: .touchUpInside)
         
         fastfoodButton = UIButton(frame:CGRect (x: screenSize.width*0.6,y: screenSize.height*0.4,width: screenSize.width*0.3,height: screenSize.height*0.1))
         fastfoodButton.setTitle("Fast Food", for: .normal)
         fastfoodButton.backgroundColor = .red
-
+        fastfoodButton.addTarget(self, action: #selector(fastFoodFunc), for: .touchUpInside)
         
         soupButton = UIButton(frame:CGRect (x: screenSize.width*0.35,y: screenSize.height*0.6,width: screenSize.width*0.3,height: screenSize.height*0.1))
         soupButton.setTitle("Çorbalar", for: .normal)
         soupButton.backgroundColor = .red
+        soupButton.addTarget(self, action: #selector(soupFunc), for: .touchUpInside)
         
         backButton = UIButton(frame:CGRect (x: screenSize.width*0.05,y: screenSize.height*0.05,width: screenSize.width*0.1,height: screenSize.height*0.05))
         backButton.setTitle("Geri", for: .normal)
@@ -67,6 +74,8 @@ class UserMenu: UIViewController {
         view.addSubview(fastfoodButton)
         view.addSubview(soupButton)
         view.addSubview(backButton)
+        
+        
     }
     
     
@@ -104,33 +113,32 @@ class UserMenu: UIViewController {
     
     func filtering(dataArray:String)
     {
+        
+        sendetData.removeAll()
+        productArrayBuffer.removeAll()
+        
         for i in productArray
         {
-            if i.productCategory != dataArray
+            if i.productCategory == dataArray
             {
-                productArray.remove(at: counterProduct)
-                counterProduct = 0
+                productArrayBuffer.append(i)
             }
-            counterProduct += 1
         }
-        for i in productArray
+        
+        for i in productArrayBuffer
         {
             sendetData.append(i.productNameGet() + "*" + i.productPriceGet() + "*" + i.productNoGet() + "*" + i.productInfoGet() + "*" + i.productCategoryGet())
-            sendetData.append("#")
         }
-        //setProductArray.set(productArray.description, forKey: "urunDizi")
+        
         setProductArray.set(sendetData, forKey: "urunDizi")
-       // var show = ProductShow()
-        //self.present(show,animated: true,completion: nil )
-   	    var s = MenuList()
+        var s = MenuList()
         self.present(s,animated: true,completion: nil)
-    }
+   }
     
     
     @objc func dinnerFunc()
     {
         filtering(dataArray: "anaYemek")
-        
     }
     
     @objc func drinkfunc()

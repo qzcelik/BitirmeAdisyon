@@ -11,8 +11,9 @@ import UIKit
 class MenuCell: UITableViewCell {
 
     var screnSize = UIScreen.main.bounds
-    var sendButton = UIButton()
+    //var sendButton = UIButton()
     var mealName = UILabel()
+    var cafeLogo = UIImageView()
     var mealPrice = UILabel()
     var subView = UIView()
     required init?(coder aDecoder: NSCoder) {
@@ -25,10 +26,12 @@ class MenuCell: UITableViewCell {
         subView = UIView(frame: CGRect(x:screnSize.width*0.01,y:screnSize.height*0.01,width:screnSize.width*0.98,height:screnSize.height*0.1))
         subView.backgroundColor = UIColor.clear
         
+        cafeLogo = UIImageView(frame:CGRect(x:subView.bounds.width*0.5,y:subView.bounds.height*0.05,width:subView.bounds.width*0.4,height:subView.bounds.height*0.6))
+        cafeLogo.image = #imageLiteral(resourceName: "logo")
         
-        sendButton = UIButton(frame:CGRect(x:subView.bounds.width*0.5,y:subView.bounds.height*0.05,width:subView.bounds.width*0.4,height:subView.bounds.height*0.6))
+        /*sendButton = UIButton(frame:CGRect(x:subView.bounds.width*0.5,y:subView.bounds.height*0.05,width:subView.bounds.width*0.4,height:subView.bounds.height*0.6))
         sendButton.setTitle("Gönder", for: .normal)
-        sendButton.backgroundColor = .red
+        sendButton.backgroundColor = .red*/
         
         mealName = UILabel(frame: CGRect(x:subView.bounds.width*0.1,y:subView.bounds.height*0.02,width:subView.bounds.width*0.45,height:subView.bounds.height*0.4))
         mealName.textColor = .black
@@ -38,7 +41,8 @@ class MenuCell: UITableViewCell {
         mealPrice.textColor = .black
         mealPrice.text = "yemek fiyat"
         
-        subView.addSubview(sendButton)
+        //subView.addSubview(sendButton)
+        subView.addSubview(cafeLogo)
         subView.addSubview(mealPrice)
         subView.addSubview(mealName)
         self.addSubview(subView)

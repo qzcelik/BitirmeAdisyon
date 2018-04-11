@@ -21,9 +21,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = .red
+        
         arkaPlan  = UIImageView(frame:CGRect(x:0,y:0,width:screenSize.width,height:screenSize.height))
-        arkaPlan.image = #imageLiteral(resourceName: "bg")
+        arkaPlan.image = #imageLiteral(resourceName: "garsonLoginBg")
         
         view.addSubview(arkaPlan)
         uiDesign()
@@ -37,12 +37,18 @@ class ViewController: UIViewController {
         girisTextArka = UIImageView(frame:CGRect(x:screenSize.width*0.15,y:screenSize.height*0.5,width:screenSize.width*0.7,height:screenSize.height*0.25))
         
          kulAd = UITextField(frame:CGRect(x:screenSize.width*0.2,y:screenSize.height*0.55,width:screenSize.width*0.6,height:screenSize.height*0.06))
-         kulAd.background = #imageLiteral(resourceName: "text")
+         kulAd.placeholder = "Kullanıcı Adı Giriniz"
+         kulAd.leftView = UIView(frame: CGRect(x:0,y:0,width:10,height:kulAd.frame.height))
+         kulAd.leftViewMode = .always
+         kulAd.background = #imageLiteral(resourceName: "txtBg")
          
          kulSifre = UITextField(frame:CGRect(x:screenSize.width*0.2,y:screenSize.height*0.62,width:screenSize.width*0.6,height:screenSize.height*0.06))
-         kulSifre.background = #imageLiteral(resourceName: "text")
+         kulSifre.placeholder = "Kullanıcı Şifre Giriniz"
+         kulSifre.leftView = UIView(frame: CGRect(x:0,y:0,width:10,height:kulSifre.frame.height))
+         kulSifre.leftViewMode = .always
+         kulSifre.background = #imageLiteral(resourceName: "txtBg")
         
-        girisButon = UIButton(frame:CGRect(x:screenSize.width*0.4,y:screenSize.height*0.65,width:screenSize.width*0.2,height:screenSize.height*0.1))
+        girisButon = UIButton(frame:CGRect(x:screenSize.width*0.4,y:screenSize.height*0.7,width:screenSize.width*0.2,height:screenSize.height*0.1))
         girisButon.setTitle("Giriş", for: .normal)
         girisButon.setTitleColor(.black, for: .normal)
         girisButon.addTarget(self, action:#selector(login) , for: .touchUpInside)

@@ -21,6 +21,7 @@ class UserMenu: UIViewController {
     var fastfoodButton = UIButton()
     var soupButton = UIButton()
     var backButton = UIButton()
+    var bgImage = UIImageView()
     var productArray = [MenuGetSet]()
     var productArrayBuffer = [MenuGetSet]()
     var counterProduct = Int()
@@ -28,44 +29,40 @@ class UserMenu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
+        bgImage = UIImageView(frame: CGRect(x:0,y:0,width:screenSize.width,height:screenSize.height))
+        bgImage.image = #imageLiteral(resourceName: "bg4.fw")
         sendetData.removeAll()
         productArray.removeAll()
         productArrayBuffer.removeAll()
+        view.addSubview(bgImage)
         uiElement()
         getMenuData()
     }
     
     func uiElement()
     {
-        dinnerButton = UIButton(frame:CGRect (x: screenSize.width*0.1,y: screenSize.height*0.2,width: screenSize.width*0.3,height: screenSize.height*0.1))
-        dinnerButton.setTitle("Yemekler", for: .normal)
-        dinnerButton.backgroundColor = .red
+        dinnerButton = UIButton(frame:CGRect (x: screenSize.width*0.1,y: screenSize.height*0.23,width: screenSize.width*0.3,height: screenSize.height*0.17))
+        dinnerButton.setImage(#imageLiteral(resourceName: "anaYemek"), for: .normal)
         dinnerButton.addTarget(self, action: #selector(dinnerFunc), for: .touchUpInside)
         
-        drinkButton = UIButton(frame:CGRect (x: screenSize.width*0.6,y: screenSize.height*0.2,width: screenSize.width*0.3,height: screenSize.height*0.1))
-        drinkButton.setTitle("İçecek", for: .normal)
-        drinkButton.backgroundColor = .red
+        drinkButton = UIButton(frame:CGRect (x: screenSize.width*0.6,y: screenSize.height*0.23,width: screenSize.width*0.3,height: screenSize.height*0.17))
+        drinkButton.setImage(#imageLiteral(resourceName: "icecek"), for: .normal)
         drinkButton.addTarget(self, action: #selector(drinkfunc), for: .touchUpInside)
         
-        dessertButton = UIButton(frame:CGRect (x: screenSize.width*0.1,y: screenSize.height*0.4,width: screenSize.width*0.3,height: screenSize.height*0.1))
-        dessertButton.setTitle("Tatlı", for: .normal)
-        dessertButton.backgroundColor = .red
+        dessertButton = UIButton(frame:CGRect (x: screenSize.width*0.1,y: screenSize.height*0.45,width: screenSize.width*0.3,height: screenSize.height*0.17))
+        dessertButton.setImage(#imageLiteral(resourceName: "tatli"), for: .normal)
         dessertButton.addTarget(self, action: #selector(dessertFunc), for: .touchUpInside)
         
-        fastfoodButton = UIButton(frame:CGRect (x: screenSize.width*0.6,y: screenSize.height*0.4,width: screenSize.width*0.3,height: screenSize.height*0.1))
-        fastfoodButton.setTitle("Fast Food", for: .normal)
-        fastfoodButton.backgroundColor = .red
+        fastfoodButton = UIButton(frame:CGRect (x: screenSize.width*0.6,y: screenSize.height*0.45,width: screenSize.width*0.3,height: screenSize.height*0.17))
+        fastfoodButton.setImage(#imageLiteral(resourceName: "fastfood"), for: .normal)
         fastfoodButton.addTarget(self, action: #selector(fastFoodFunc), for: .touchUpInside)
         
-        soupButton = UIButton(frame:CGRect (x: screenSize.width*0.35,y: screenSize.height*0.6,width: screenSize.width*0.3,height: screenSize.height*0.1))
-        soupButton.setTitle("Çorbalar", for: .normal)
-        soupButton.backgroundColor = .red
+        soupButton = UIButton(frame:CGRect (x: screenSize.width*0.35,y: screenSize.height*0.65,width: screenSize.width*0.3,height: screenSize.height*0.17))
+        soupButton.setImage(#imageLiteral(resourceName: "corba"), for: .normal)
         soupButton.addTarget(self, action: #selector(soupFunc), for: .touchUpInside)
         
-        backButton = UIButton(frame:CGRect (x: screenSize.width*0.05,y: screenSize.height*0.05,width: screenSize.width*0.1,height: screenSize.height*0.05))
-        backButton.setTitle("Geri", for: .normal)
-        backButton.backgroundColor = .blue
+        backButton = UIButton(frame:CGRect (x: screenSize.width*0.05,y: screenSize.height*0.08,width: screenSize.width*0.1,height: screenSize.height*0.07))
+        backButton.setImage(#imageLiteral(resourceName: "geriButon"), for: .normal)
         backButton.addTarget(self, action: #selector(backScreen), for: .touchUpInside)
         
         view.addSubview(dinnerButton)

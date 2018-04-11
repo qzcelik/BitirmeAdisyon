@@ -20,8 +20,12 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
     var searchButton = UIButton()
     var backButton = UIButton()
     var getCashButton = UIButton()
-    var totalPriceText = UITextView()
+    var totalPriceText = UILabel()
+    var freeTableCount = UILabel()
+    var freeTableCount2 = UILabel()
     var filteringArray = [String]()
+    var masaIdArray = [String] ()
+    var bgImage = UIImageView()
     var data = [AdisyonGetSet]()
     var cash : Int = 0
     var screenSize = UIScreen.main.bounds
@@ -29,38 +33,53 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        tableView = UITableView(frame:CGRect(x:screenSize.width*0.01,y:screenSize.height*0.2,width:screenSize.width*0.9,height:screenSize.height*0.5),style:UITableViewStyle.plain )
+        tableView = UITableView(frame:CGRect(x:0,y:screenSize.height*0.33,width:screenSize.width,height:screenSize.height*0.5),style:UITableViewStyle.plain )
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "table")
+        tableView.backgroundView = UIImageView(image:UIImage(named: "bg13"))
         
-        searchBox = UITextField(frame:CGRect(x:screenSize.width*0.1,y:screenSize.height*0.12,width:screenSize.width*0.5,height:screenSize.height*0.05))
-        searchBox.placeholder = "Masa Numarası Giriniz"
-        searchBox.borderStyle = .bezel
+        bgImage = UIImageView(frame: CGRect(x:0,y:0,width:screenSize.width,height:screenSize.height))
+        bgImage.image = #imageLiteral(resourceName: "bg12")
+        
+        freeTableCount = UILabel(frame:CGRect(x:screenSize.width*0.05,y:screenSize.height*0.15,width:screenSize.width*0.8,height:screenSize.height*0.15))
+        freeTableCount.textColor = .black
+        freeTableCount.font = UIFont.boldSystemFont(ofSize: CGFloat(Float(20)))
+        
+        freeTableCount2 = UILabel(frame:CGRect(x:screenSize.width*0.05,y:screenSize.height*0.18,width:screenSize.width*0.8,height:screenSize.height*0.15))
+        freeTableCount2.textColor = .black
+        freeTableCount2.font = UIFont.boldSystemFont(ofSize: CGFloat(Float(20)))
+        
+        searchBox = UITextField(frame:CGRect(x:screenSize.width*0.65,y:screenSize.height*0.2,width:screenSize.width*0.32,height:screenSize.height*0.06))
+        searchBox.placeholder = "Masa No"
         searchBox.textColor = .black
+        searchBox.background = #imageLiteral(resourceName: "txtBg")
+        searchBox.leftView = UIView(frame:CGRect(x:0,y:0,width:10,height:searchBox.frame.height))
+        searchBox.leftViewMode = .always
+        searchBox.leftView = UIView(frame: CGRect(x:0,y:0,width:10,height:searchBox.frame.height))
         
-        backButton = UIButton(frame:CGRect(x:screenSize.width*0.05,y:screenSize.height*0.05,width:screenSize.width*0.1,height:screenSize.height*0.05))
-        backButton.setTitle("Geri", for: .normal)
-        backButton.backgroundColor = .blue
+        backButton = UIButton(frame:CGRect(x:screenSize.width*0.05,y:screenSize.height*0.09,width:screenSize.width*0.1,height:screenSize.height*0.07))
+        backButton.setImage(#imageLiteral(resourceName: "geriButon"), for: .normal)
         backButton.addTarget(self, action: #selector(backScreen), for: .touchUpInside)
         
-        searchButton = UIButton(frame: CGRect(x:screenSize.width*0.65,y:screenSize.height*0.12,width:screenSize.width*0.3,height:screenSize.height*0.05))
+        searchButton = UIButton(frame: CGRect(x:screenSize.width*0.65,y:screenSize.height*0.25,width:screenSize.width*0.3,height:screenSize.height*0.05))
         searchButton.setTitle("Ara", for: .normal)
-        searchButton.backgroundColor = .red
         searchButton.addTarget(self, action: #selector(veriYaz), for:.touchUpInside)
         
-        totalPriceText = UITextView(frame: CGRect(x:screenSize.width*0.2,y:screenSize.height*0.75,width:screenSize.width*0.8,height:screenSize.height*0.05))
+        totalPriceText = UILabel(frame: CGRect(x:screenSize.width*0.2,y:screenSize.height*0.85,width:screenSize.width*0.8,height:screenSize.height*0.05))
         totalPriceText.font = UIFont.boldSystemFont(ofSize: CGFloat(Float(25)))
         
         
-        getCashButton = UIButton(frame: CGRect(x:screenSize.width*0.3,y:screenSize.height*0.85,width:screenSize.width*0.4,height:screenSize.height*0.05))
+        getCashButton = UIButton(frame: CGRect(x:screenSize.width*0.3,y:screenSize.height*0.9,width:screenSize.width*0.4,height:screenSize.height*0.05))
         getCashButton.setTitle("Hesap Kes", for: .normal)
-        getCashButton.backgroundColor = .red
         getCashButton.addTarget(self, action: #selector(takeAccount), for: .touchUpInside)
         
+        view.addSubview(bgImage)
         view.addSubview(tableView)
         view.addSubview(searchBox)
+        view.addSubview(freeTableCount)
+        view.addSubview(freeTableCount2)
         view.addSubview(searchButton)
         view.addSubview(backButton)
         view.addSubview(totalPriceText)
@@ -109,8 +128,36 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
                                         
                                         var adisyon = AdisyonGetSet(masaId: jsonNesne["masaId"] as! String, urunFiyat: jsonNesne["urunFiyat"] as! String,urunKategori: jsonNesne["urunKategori"] as! String,urunAd: jsonNesne["urunAd"] as! String,urunAdet: jsonNesne["urunAdet"] as! String)
                                         self.data.append(adisyon)
+                                        self.masaIdArray.append(jsonNesne["masaId"] as! String)
+                                        self.masaIdArray.sort()
+                                        
+                                  }
+                                    
+                                    var i = 0
+                                    var buffer = 0
+                                    var tableIds = " "
+                                    
+                                    while i <= 6
+                                    {
+                                    
+                                        for mId in self.masaIdArray
+                                    {
+                                            if Int(mId) == i
+                                            {
+                                               buffer += 1
+                                               //i = buffer
+                                               tableIds += String(i) + ","
+                                               break
+                                            }
+                                     }
+                                        i += 1
                                     }
+                                    
+                                    self.freeTableCount.text = "Dolu Masalar : " + tableIds
+                                    self.freeTableCount2.text =  "Boş Kapasite : " + String((6-buffer) * 4) + " Kişi"
+                                    
                                 }
+                                
                                 
                                 self.veriYaz()
                             }
@@ -154,6 +201,10 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
         tableView.deselectRow(at: indexPath, animated: true)
         let secilenSatir =  tableView.cellForRow(at: indexPath)
         print("Toplam Tutar : " + (secilenSatir?.textLabel?.text)!)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white:1,alpha:0.3)
     }
     
 

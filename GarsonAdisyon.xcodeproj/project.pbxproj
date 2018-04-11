@@ -15,6 +15,7 @@
 		45233B39204E9DF200697326 /* ProductShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45233B38204E9DF200697326 /* ProductShow.swift */; };
 		45233B3B204EA35C00697326 /* MenuGetSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45233B3A204EA35C00697326 /* MenuGetSet.swift */; };
 		4528CD67204D30E900802DA8 /* UserAdisyon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528CD66204D30E900802DA8 /* UserAdisyon.swift */; };
+		452E6AFE206BCBC00044D92A /* EmptyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452E6AFD206BCBC00044D92A /* EmptyTable.swift */; };
 		454647932045AE5D005AD6E4 /* UserProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454647922045AE5D005AD6E4 /* UserProfil.swift */; };
 		454647952045F3F9005AD6E4 /* AdisyonGetSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454647942045F3F9005AD6E4 /* AdisyonGetSet.swift */; };
 		459F8D76200608AE0015087E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459F8D75200608AE0015087E /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		45233B38204E9DF200697326 /* ProductShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductShow.swift; sourceTree = "<group>"; };
 		45233B3A204EA35C00697326 /* MenuGetSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGetSet.swift; sourceTree = "<group>"; };
 		4528CD66204D30E900802DA8 /* UserAdisyon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdisyon.swift; sourceTree = "<group>"; };
+		452E6AFD206BCBC00044D92A /* EmptyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTable.swift; sourceTree = "<group>"; };
 		454647922045AE5D005AD6E4 /* UserProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfil.swift; sourceTree = "<group>"; };
 		454647942045F3F9005AD6E4 /* AdisyonGetSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdisyonGetSet.swift; sourceTree = "<group>"; };
 		459F8D72200608AE0015087E /* GarsonAdisyon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarsonAdisyon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				45233B3A204EA35C00697326 /* MenuGetSet.swift */,
 				45CD4B4720588C8D0076AA03 /* MenuList.swift */,
 				45CD4B4920588E1B0076AA03 /* MenuCell.swift */,
+				452E6AFD206BCBC00044D92A /* EmptyTable.swift */,
 			);
 			path = GarsonAdisyon;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				451AEB2F20082651001F38B9 /* LoginClass.swift in Sources */,
 				45233B39204E9DF200697326 /* ProductShow.swift in Sources */,
 				45CD4B4820588C8D0076AA03 /* MenuList.swift in Sources */,
+				452E6AFE206BCBC00044D92A /* EmptyTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ class MenuList: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var kulIdMasaId = UserDefaults.standard
     var screenSize = UIScreen.main.bounds
     var tableView = UITableView()
+    var bgImage = UIImageView()
     var backButton = UIButton()
     var resultDataArray = [MenuGetSet]()
     var mealNameArray = [String]()
@@ -23,21 +24,22 @@ class MenuList: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var url2 = "http://ibrahimozcelik.net/bitirme/AdminBosMasa.php"
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        bgImage = UIImageView(frame: CGRect(x:0,y:0,width:screenSize.width,height:screenSize.height))
+        bgImage.image = #imageLiteral(resourceName: "bg4.fw")
         
-        backButton = UIButton(frame: CGRect(x:screenSize.width*0.05,y:screenSize.height*0.05,width:screenSize.width*0.1,height:screenSize.height*0.05))
-        backButton.setTitle("Geri", for: .normal)
-        backButton.backgroundColor = .blue
-        backButton.setTitleColor(.white, for: .normal)
+        backButton = UIButton(frame: CGRect(x:screenSize.width*0.05,y:screenSize.height*0.08,width:screenSize.width*0.1,height:screenSize.height*0.07))
+        backButton.setImage(#imageLiteral(resourceName: "geriButon"), for: .normal)
         backButton.addTarget(self, action: #selector(geri), for: .touchUpInside)
         
-        tableView = UITableView(frame: CGRect(x:screenSize.width*0.001,y:screenSize.height*0.15,width:screenSize.width*0.99,height:screenSize.height*0.99))
+        tableView = UITableView(frame: CGRect(x:0,y:screenSize.height*0.2,width:screenSize.width,height:screenSize.height*0.99))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(MenuCell.self, forCellReuseIdentifier: "MenuCellId")
-        tableView.reloadData()
+        tableView.backgroundView = UIImageView(image:UIImage(named: "bg8"))
         
+        tableView.reloadData()
+        view.addSubview(bgImage)
         view.addSubview(tableView)
         view.addSubview(backButton)
         
@@ -90,7 +92,7 @@ class MenuList: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let cell = MenuCell(style: UITableViewCellStyle.default,reuseIdentifier:"MenuCellId")
         cell.mealName.text = mealNameArray[indexPath.row]
-        cell.mealPrice.text = mealPriceArray[indexPath.row]
+        cell.mealPrice.text = mealPriceArray[indexPath.row] + " ₺"
         cell.cafeLogo.image = #imageLiteral(resourceName: "logo")
         return cell
     }
@@ -102,6 +104,9 @@ class MenuList: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }
         
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1 , alpha:0.2)
     }
     
     @objc func geri()

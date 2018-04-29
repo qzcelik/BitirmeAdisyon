@@ -197,6 +197,7 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
         
         tableView.deselectRow(at: indexPath, animated: true)
         let secilenSatir =  tableView.cellForRow(at: indexPath)
@@ -207,8 +208,31 @@ class UserAdisyon: UIViewController , UITableViewDataSource,UITableViewDelegate 
         cell.backgroundColor = UIColor(white:1,alpha:0.3)
     }
     
-
-    
+   
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+       
+        let deleteUrl = "http://ibrahimozcelik.net/bitirme/siparisIptal.php"
+        var splitArray = filteringArray[indexPath.row].components(separatedBy: " ")
+        var param : [String:Any] = ["kulId":kulId.string(forKey: "kullaniciId")!+searchBox.text!,"urunAd":splitArray[0]]
+        if editingStyle == .delete
+        {
+            
+            var alert = UIAlertController(title:"Sipariş İptal",message:"Sipariş İptal Edilsin mi?",preferredStyle:UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title:"Sil", style:UIAlertActionStyle.default,handler:{action in
+                Alamofire.request(deleteUrl,method: .post,parameters: param,encoding:URLEncoding.httpBody).responseJSON{response in}
+                self.filteringArray.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+            }))
+            alert.addAction(UIAlertAction(title:"İptal",style:UIAlertActionStyle.default,handler:nil))
+            self.present(alert,animated: true,completion: nil)
+            
+            
+            
+            
+            
+        }
+    }
     
 
    
